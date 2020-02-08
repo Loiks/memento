@@ -85,6 +85,16 @@ async function gotoWithRetry(page, url) {
     }
 }
 
+process.on('SIGINT', () => {
+    // only works on *nix
+    // TODO: supports windows
+    console.log('Waiting for writing results into disk');
+
+    const resultsYAML = yaml.dump(results);
+    fs.writeFileSync(config.DOULIST_OUTPUT_RESULT, resultsYAML); 
+    process.exit();
+});
+
 (async () => {
     if (!fs.existsSync(config.DOULIST_BACKUP)) {
         fs.mkdirSync(config.DOULIST_BACKUP);
