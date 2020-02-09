@@ -50,6 +50,10 @@ npm run start:doulist:polling
 
 程序会一直运行下去，直到被用户手动关闭。抓取的页面保存在 `doulist` 这个文件夹里。
 
+## 程序抓取的内容
+
+目前程序会 [webpage-list.yaml](./webpage-list.yaml) 内的 250 多篇公众号和新闻网站内的文章链接以及 [doulists.yaml](./doulists.yaml) 内的 21 个豆列中的所有内容。你也可以添加或者删除其中的链接。
+
 ### 2.1 添加新的媒体网页
 
 请在按照以下格式添加在 [webpage-list.yaml](./webpage-list.yaml) 中。
