@@ -43,4 +43,3 @@ if (!fs.existsSync(config.WEBPAGES_BACKUP)){
 }
 
 extraLink('./webpage-list.yaml');
-// downloadWebpages('https://mp.weixin.qq.com/s/70ppW1K28TXBcPWjcjpX-A', '.')
