@@ -2,15 +2,14 @@
 
 ## 安装
 
-### macOS/Linux
-
-#### 准备工作
+### 准备工作
 
 1. 安装 nodejs：[https://nodejs.org/zh-cn/](https://nodejs.org/zh-cn/)（选择长期支持版即可）
+2. 下载 [memento](https://github.com/lalambdada/memento/archive/master.zip)，并解压。如果你会使用 git，则直接 `git clone https://github.com/lalambdada/memento.git`
 
-#### 安装
+### macOS/Linux 安装 memento
 
-打开命令行工具（terminal）输入：
+打开命令行工具（mac 下是 terminal）输入：
 
 ```bash
 git clone https://github.com/lalambdada/rememberit.git # 下载代码
@@ -20,9 +19,10 @@ npm install # 安装软件
 
 以上每一行为一个命令，输入完按回车，等执行完成后再输入下一个命令。
 
-### Windows
+### Windows 安装 memento
 
-[TODO]
+1. 打开命令行工具（windows 下是 cmd 或者 powershell，二者皆可）后输入 `cd `（注意 cd 后面的空格），然后再用鼠标把解压出来的文件夹拖入命令行工具，并按回车。
+2. 输入 `npm install` 等待软件安装完成
 
 ## 运行
 
@@ -50,3 +50,6 @@ npm run start:doulist:polling
 
 程序会一直运行下去，直到被用户手动关闭。抓取的页面保存在 `doulist` 这个文件夹里。
 
+## 说明
+
+本人 JavaScript 新手，这个程序也是我是边学 js 边写的，所以里面肯定有很多问题。欢迎大佬们提 issues。
