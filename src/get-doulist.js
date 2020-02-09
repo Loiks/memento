@@ -128,11 +128,11 @@ process.on('SIGINT', () => {
         process.exit(1);
     }
 
-    while (polling) {
+    do {
         for (var i = 0; i < doulistURL.length; ++i) {
             console.info(`begin to visit ${doulistURL[i]}`)
             await downloadItemInDoulist(doulistURL[i], config.DOULIST_BACKUP);
         }
         await sleep(Math.floor(Math.random() * 10000) + 1000 * 60 * 10);
-    }
+    } while (polling);
 })();
