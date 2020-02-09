@@ -40,26 +40,18 @@ async function DownloadWebpages(url, location, title) {
     await page.$eval(
         'html', element => element.setAttribute('class', 'ua-mac ua-webkit')
     );
-    try {
-        await page.$eval(
-            '.ui-overlay-mask', element => element.setAttribute('style', 'display:none;')
-        );
-    } catch (_) {
-        // ignore
-    }
-    try {
-        // remove reading full article button and show full article on douban.com.
-        await page.$eval(
-            '#link-report_note', element => {
-                const sibling = element.nextElementSibling;
-                if (sibling.nextElementSibling !== null) {
-                    element.nextElementSibling.nextElementSibling.replaceWith('');
-                }
-            }
-        );
-    } catch (_) {
-        // ignore
-    }
+    await page.$eval(
+        '.ui-overlay-mask', element => element.setAttribute('style', 'display:none;')
+    ).catch(_ => { });
+
+    // remove reading full article button 
+    // and show full article on douban.com/note and douban.com/review.
+    await page.$eval(
+        '.taboola-hide-container', element => {
+            element.removeChild(element.lastChild);
+            element.removeChild(element.lastChild);
+        }
+    ).catch(_ => {});
 
     // some page use lazy loading, 
     // so scroll the page to the end to finishing loading.
