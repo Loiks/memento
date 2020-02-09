@@ -42,7 +42,7 @@ async function downloadItemInDoulist(url, dir) {
 
             if (link.startsWith('https://www.douban.com/url/')) {
                 // we need to redirect to external link from douban.com/url/
-                // but douban.com/url/ does not open for headless visiting
+                // but douban.com/url/ is not available for headless visiting
                 // TODO: login douban.com
                 // console.debug(`will redirect to ${link}`);
                 // const page2 = await browser.newPage();
