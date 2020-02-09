@@ -23,15 +23,19 @@ async function extraLink(listFilePath) {
             for (var i = 0, len = articles.length; i < len; ++i) {
                 const value = articles[i];
                 if (value.downloaded === false) {
-                    utils.DownloadWebpagesWithRetry(
+                    const res = await utils.DownloadWebpagesWithRetry(
                         value.link,
                         secondLevelDir,
                         `${value.time}-${value.title}.mhtml`
                     );
+                    list[articleType][publisher][i].downloaded = res.downloaded;
                 }
             }
         }
     }
+
+    const listYAML = yaml.dump(list);
+    fs.writeFileSync(listFilePath, listYAML);
 }
 
 if (!fs.existsSync(config.WEBPAGES_BACKUP)){

@@ -114,6 +114,7 @@ dist
 doulist/
 doulist_old/
 output/
+webpages/
 douban-list.yaml
 .pnp.js
 

@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const config = require('./config.js');
+const sleep = require('util').promisify(setTimeout);
 
 // https://stackoverflow.com/questions/51529332/puppeteer-scroll-down-until-you-cant-anymore
 async function autoScroll(page) {
@@ -67,8 +68,11 @@ async function DownloadWebpages(url, location, title) {
     const cdp = await page.target().createCDPSession();
     const { data } = await cdp.send('Page.captureSnapshot', { format: 'mhtml' });
     const now = new Date();
-    const nowStr =
-        `${now.getUTCSeconds()+1}${now.getUTCMinutes()+1}${now.getUTCHours()+1}${now.getUTCDate()+1}${now.getUTCMonth()+1}`;
+    const nowStr = `${now.getUTCSeconds() + 1}`.padStart(2, '0')
+        + `${now.getUTCMinutes() + 1}`.padStart(2, '0')
+        + `${now.getUTCHours() + 1}`.padStart(2, '0')
+        + `${now.getUTCDate() + 1}`.padStart(2, '0')
+        + `${now.getUTCMonth() + 1}`.padStart(2, '0');
     fs.writeFileSync(
         `${location}/${title}-snapshot-${nowStr}.mhtml`,
         data
@@ -80,7 +84,6 @@ async function DownloadWebpages(url, location, title) {
 }
 
 async function DownloadWebpagesWithRetry(url, location, title) {
-    const sleep = require('util').promisify(setTimeout);
     var downloaded = false;
 
     console.debug(url);
