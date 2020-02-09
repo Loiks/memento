@@ -2,13 +2,13 @@
   "name": "backup",
   "scripts": {
     "start:webpage": "node src/get-webpages.js",
-    "start:doulist": "node src/get-doulist.js"
+    "start:doulist": "node src/get-doulist.js",
+    "start:doulist:polling": "node src/get-doulist.js polling"
   },
   "license": "MIT",
   "dependencies": {
     "fs-extra": "^8.1.0",
     "js-yaml": "^3.13.1",
-    "node-emoji": "^1.10.0",
     "path": "^0.12.7",
     "puppeteer": "^2.1.0",
     "url": "^0.11.0"

@@ -114,9 +114,21 @@ process.on('SIGINT', () => {
         process.exit(1);
     }
 
-    const doulistURL = yaml.safeLoad(fs.readFileSync(config.DOULIST_INPUT, 'utf8'));
+    var polling = false;
+    if (process.argv.length > 2 && process.argv[2] == 'polling') {
+        polling = true;
+    } else if (process.argv.length > 2) {
+        console.error('Wrong parameters.');
+        process.exit(1);
+    }
 
-    while (true) {
+    const doulistURL = yaml.safeLoad(fs.readFileSync(config.DOULIST_INPUT, 'utf8'));
+    if (doulistURL === null) {
+        console.error('No doulist link in \'doulists.yaml\'.');
+        process.exit(1);
+    }
+
+    while (polling) {
         for (var i = 0; i < doulistURL.length; ++i) {
             console.info(`begin to visit ${doulistURL[i]}`)
             await downloadItemInDoulist(doulistURL[i], config.DOULIST_BACKUP);
