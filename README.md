@@ -52,7 +52,7 @@ npm run start:doulist:polling
 
 ## 程序抓取的内容
 
-目前程序会 [webpage-list.yaml](./webpage-list.yaml) 内的 250 多篇公众号和新闻网站内的文章链接以及 [doulists.yaml](./doulists.yaml) 内的 21 个豆列中的所有内容。你也可以添加或者删除其中的链接。
+目前程序抓取 [webpage-list.yaml](./webpage-list.yaml) 内的 250 多篇网页文章和 [doulists.yaml](./doulists.yaml) 内的 21 个豆列中的所有内容。你也可以添加或者删除其中的链接来抓取或者不抓取某个内容。
 
 ### 2.1 添加新的媒体网页
 
